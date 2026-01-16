@@ -1,0 +1,718 @@
+:root {
+    /* Design System - Cores */
+    --color-bg: #F9F7F2;
+    --color-primary: #4A6C58;
+    --color-secondary: #D4A373;
+    --color-text: #2C3330;
+
+    /* Design System - Fontes */
+    --font-title: 'Playfair Display', serif;
+    --font-text: 'Lato', sans-serif;
+
+    /* Design System - Layout */
+    --border-radius-lg: 20px;
+}
+
+/* Modern CSS Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Camada de Textura (Noise/Grain) - Cinematic Look */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.04; /* Sutil */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Tipografia Base */
+h1, h2, h3 {
+    font-family: var(--font-title);
+    font-weight: 700;
+}
+
+/* --- CORREÇÃO GERAL DE LAYOUT --- */
+/* Define um limite de largura para o conteúdo não colar nas bordas em telas grandes */
+.container {
+    width: 100%;
+    max-width: 1280px; /* Largura máxima padrão de mercado */
+    margin: 0 auto; /* Centraliza o bloco na tela */
+    padding: 0 20px; /* Margem de segurança para mobile */
+}
+
+/* WebGL Background Container */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    color: var(--color-bg); /* Contraste com o fundo */
+}
+
+.hero-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+}
+
+.brand-composition {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.1; /* Altura de linha segura */
+    margin-bottom: 20px; /* Espaço para o subtítulo abaixo */
+}
+
+.hero-sup-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem; /* Tamanho equilibrado */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    display: block;
+}
+
+.hero-main-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 6rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    margin-top: 0;
+    line-height: 1;
+}
+
+.hero-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #F9F7F2;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+/* Responsivo para Celular */
+@media (max-width: 768px) {
+    .hero-sup-title { font-size: 0.9rem; letter-spacing: 2px; }
+    .hero-main-title { font-size: 4rem; }
+    .hero-subtitle { font-size: 0.9rem; max-width: 90%; }
+}
+
+/* Seções de Conteúdo (Sobre, Serviços, Equipe) */
+section:not(#hero) {
+    background-color: var(--color-bg);
+    position: relative;
+    z-index: 2;
+    padding: 100px 20px;
+}
+
+/* Estilos Específicos: Seção Sobre */
+#sobre {
+    padding: 120px 0;
+    background-color: var(--color-bg);
+    position: relative;
+    z-index: 2;
+}
+
+#sobre .container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* Desktop: Layout em Linha */
+@media (min-width: 1024px) {
+    #sobre .container {
+        flex-direction: row;
+        align-items: center;
+        gap: 80px;
+    }
+    .sobre-text {
+        flex: 1;
+        text-align: left;
+    }
+    .sobre-visual {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* --- Título da Seção Sobre (Aumentado) --- */
+.sobre-text h2 {
+    font-size: 2.6rem; /* Tamanho maior para impacto */
+    line-height: 1.2; /* Altura de linha ajustada */
+    margin-bottom: 30px;
+    color: var(--color-primary); /* Garante destaque com a cor da marca */
+}
+
+.sobre-text p {
+    line-height: 1.8;
+    color: #2C3330;
+    margin-bottom: 24px;
+}
+
+.sobre-text .destaque {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--color-secondary);
+}
+
+.sobre-visual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sobre-visual img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(44, 51, 48, 0.15);
+    transition: transform 0.6s ease;
+}
+
+/* Efeito sutil ao passar o mouse */
+.sobre-visual img:hover {
+    transform: scale(1.02);
+}
+
+/* --- AJUSTE MOBILE: SEÇÃO SOBRE --- */
+@media (max-width: 768px) {
+    #sobre h1, 
+    #sobre h2 {
+        /* Reduzimos de 2.5rem (ou padrão) para 1.8rem para caber tudo */
+        font-size: 2.3rem !important; 
+        line-height: 1.3;
+        
+        /* Garante que o container use a largura toda */
+        width: 100%;
+        padding: 0 10px; 
+    }
+}
+
+/* --- ASSINATURA FUNDADORA --- */
+.founder-signature {
+    margin-top: 50px; /* Respiro generoso após o texto */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinhado à esquerda junto com o texto */
+    gap: 5px;
+}
+
+.founder-name {
+    font-family: 'Great Vibes', cursive; /* Fonte manuscrita já importada */
+    font-size: 3rem; /* Tamanho grande para parecer assinatura */
+    color: var(--color-primary); /* Verde */
+    line-height: 1.1;
+    margin-left: -5px; /* Pequeno ajuste visual óptico */
+}
+
+.founder-role {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Espaçamento elegante */
+    color: var(--color-secondary); /* Terracota */
+    font-weight: 600;
+}
+
+/* Transição de Seção (Wave) */
+.section-divider {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+    z-index: 3;
+    margin-bottom: -2px;
+}
+
+.section-divider svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+}
+
+.section-divider .shape-fill {
+    fill: var(--color-primary); /* Conecta com o fundo da seção Serviços */
+}
+
+/* --- SEÇÃO SERVIÇOS (CORREÇÃO DE FUNDO) --- */
+#servicos {
+    /* O !important garante que o verde será aplicado */
+    background-color: var(--color-primary) !important; 
+    padding: 80px 0 250px !important; /* Espaço extra para a onda */
+    position: relative;
+    z-index: 2;
+    margin-top: -2px; /* Conexão perfeita com a onda */
+}
+
+/* Blocos de Serviço (Espaçamento) */
+.service-block {
+    /* Aumentado de 80px para 150px para dar um grande respiro visual entre as categorias */
+    margin-bottom: 150px;
+}
+
+/* Remove margem do último bloco para não sobrar espaço no final da seção */
+.service-block:last-child { margin-bottom: 0; }
+
+/* Título da Seção (Agora em Terracota para destaque) */
+.service-block h3 {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    /* Alterado de Branco para a cor Secundária (Terracota) */
+    color: var(--color-secondary) !important; 
+    margin-bottom: 50px;
+    text-align: center;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Grid Responsivo */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* --- CARDS COM EFEITO VIDRO (GLASSMORPHISM) --- */
+.service-card {
+    background: rgba(249, 247, 242, 0.95); /* Branco Creme Sólido/Vidro */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    cursor: default;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+}
+
+/* Ícones (Verde para conectar com o fundo) */
+.service-card i {
+    font-size: 38px;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    transition: transform 0.4s ease;
+}
+
+/* Texto do Card (Escuro para leitura) */
+.service-card h4 {
+    font-family: var(--font-text);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-text); /* Texto escuro dentro do card claro */
+    line-height: 1.4;
+}
+
+/* Hover */
+.service-card:hover {
+    transform: translateY(-10px);
+    background: #FFFFFF;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.service-card:hover i {
+    transform: scale(1.2);
+    color: var(--color-secondary); /* Terracota */
+}
+
+/* Posicionamento da Onda Inferior */
+.wave-bottom {
+    position: absolute;
+    bottom: -1px; /* Remove qualquer linha fina vazia */
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg); /* Inverte para conectar corretamente */
+    z-index: 3;
+}
+
+.wave-bottom svg { position: relative; display: block; width: calc(100% + 1.3px); height: 150px; /* Altura da onda */ }
+
+/* --- BOTÃO CTA HERO (CORREÇÃO) --- */
+.btn, .cta-button {
+    /* Propriedades de Layout e Visibilidade */
+    display: inline-block !important; /* Força a exibição */
+    position: relative;
+    z-index: 100; /* Garante que fique acima de tudo */
+    margin-top: 50px; /* Garante espaçamento do texto acima */
+    
+    /* Tamanho Extra Grande (Solicitado) */
+    padding: 1.3rem 2rem;
+    font-size: 1.1rem;
+    
+    /* Estilo Visual */
+    background-color: var(--color-primary); /* Verde */
+    color: #FFFFFF !important; /* Texto Branco Forçado */
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border: none;
+    
+    /* Sombra e Transição */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.btn:hover, .cta-button:hover {
+    background-color: #D4A373; /* Terracota */
+    transform: translateY(-5px) scale(1.05); /* Efeito de crescimento */
+    box-shadow: 0 15px 40px rgba(74, 108, 88, 0.5);
+    color: #FFFFFF !important;
+}
+
+/* Estilos Específicos: Seção Equipe */
+#equipe {
+    background-color: var(--color-bg);
+    padding-bottom: 100px;
+}
+
+#equipe .section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+}
+
+#equipe h2 {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+#equipe p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    opacity: 0.8;
+}
+
+/* Swiper Carousel Styles */
+.team-carousel {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px; /* Tamanho fixo para efeito 3D */
+    height: auto;
+}
+
+.team-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    cursor: grab; /* Indicador de interação */
+}
+
+.card-image-placeholder {
+    height: 350px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden; /* Essencial para o zoom interno */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E0DFD8; /* Fallback */
+    transition: background-color 0.4s ease;
+}
+
+.card-image-placeholder i {
+    font-size: 64px;
+    color: var(--color-primary);
+    opacity: 0.5;
+    z-index: 1;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Hover Effect: Zoom Interno */
+.swiper-slide-active .card-image-placeholder {
+    background-color: #EAE9E4;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Sombra suave no ativo */
+}
+
+/* Efeito de escala apenas no slide ativo ao passar o mouse */
+.swiper-slide-active:hover .card-image-placeholder {
+    transform: scale(1.05);
+}
+
+.swiper-slide-active:hover .card-image-placeholder i {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.card-info h3 {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 5px;
+}
+
+.card-info span {
+    font-family: var(--font-text);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-secondary);
+    font-weight: 700;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #1A2621; /* Verde Escuro Profundo */
+    color: #F9F7F2; /* Creme Claro */
+    padding: 80px 5% 30px;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- LAYOUT DO RODAPÉ (AJUSTE FINO) --- */
+.footer-content {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* 1. Bloco Esquerdo (Título) - Ocupa 40% para dar respiro */
+.footer-content > div:nth-child(1) { width: 30%; padding-right: 60px; }
+
+/* 2. Bloco do Meio (Contato) - Ocupa 35% */
+.footer-content > div:nth-child(2) { 
+    width: 30%; 
+    /* padding-left ajuda a posicionar visualmente no centro da tela */
+    padding-left: 150px; 
+}
+
+/* 3. Bloco da Direita (Navegação) - Ocupa 25% */
+.footer-content > div:nth-child(3) { 
+    width: 30%; 
+    /* Empurra o texto um pouco para a direita, mas sem colar na borda */
+    padding-left: 260px; 
+    text-align: left; /* Mantém a leitura natural */ 
+}
+
+.footer-logo {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--color-secondary);
+}
+
+.footer-col p {
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.footer-col h4 {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #fff;
+}
+
+.footer-contact, .footer-links {
+    list-style: none;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: #F9F7F2;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    color: var(--color-secondary);
+}
+
+/* --- RODAPÉ MOBILE (ALINHADO À ESQUERDA) --- */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Um embaixo do outro */
+        align-items: flex-start; /* Alinha todo mundo à ESQUERDA */
+        text-align: left;        /* Texto alinhado à esquerda */
+        gap: 40px;
+        padding: 0 20px; /* Adiciona uma margem de segurança nas laterais */
+    }
+
+    /* Remove larguras fixas do Desktop e garante preenchimento */
+    .footer-content > div:nth-child(1),
+    .footer-content > div:nth-child(2),
+    .footer-content > div:nth-child(3) {
+        width: 100%;
+        padding: 0 !important; /* Remove paddings antigos */
+        
+        /* Garante que o conteúdo interno alinhe à esquerda */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; 
+    }
+
+    /* Ajuste específico para linhas de contato (Ícone + Texto) */
+    .footer-content > div:nth-child(2) p,
+    .footer-content > div:nth-child(2) a {
+        justify-content: flex-start; /* Garante que o ícone fique no começo da linha */
+        display: flex;
+        gap: 15px; /* Espaço entre ícone e texto */
+    }
+
+    /* Navegação também à esquerda */
+    .footer-content > div:nth-child(3) a { 
+        text-align: left; 
+        padding-left: 0; /* Garante que não tenha recuo extra */ 
+    }
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(249, 247, 242, 0.1);
+    padding-top: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+/* Floating WhatsApp Button */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    background-color: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.1);
+    background-color: #20b858;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* Custom Cursor */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    display: none; /* Oculto por padrão (Mobile First) */
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.cursor.active {
+    width: 50px;
+    height: 50px;
+    opacity: 0.5;
+    background-color: var(--color-secondary);
+}
+
+/* Apenas para dispositivos com Mouse (Desktop) */
+@media (hover: hover) and (pointer: fine) {
+    body, a, button, .btn {
+        cursor: none;
+    }
+    .cursor {
+        display: block;
+    }
+}
