@@ -2,7 +2,7 @@
 
 Landing Page institucional desenvolvida para uma Clínica de Reabilitação & Medicina Integrada. O projeto foca em transmitir calma e profissionalismo através de uma interface limpa, interativa e altamente responsiva.
 
-🔗 **[Acesse o projeto online aqui]([LINK_DO_SEU_GITHUB_PAGES_AQUI](https://viinysousa.github.io/site-espaco-terapeutico-bem-me-quer/))**
+🔗 **[Acesse o projeto online aqui]((https://viinysousa.github.io/site-espaco-terapeutico-bem-me-quer/))**
 
 ## 🚀 Tecnologias Utilizadas
 
