@@ -228,22 +228,25 @@ section:not(#hero) {
 
 /* --- AJUSTE MOBILE: SEÇÃO SOBRE --- */
 @media (max-width: 768px) {
-   #sobre h1, 
-   #sobre h2 {
-        text-align: center !important; /* Centraliza o texto */
-        width: 100%;       
-        margin-left: auto; /* Força o bloco a ir para o meio */
-        margin-right: auto;
-        
-        font-size: 1.8rem !important; /* Diminuí um pouco de 2.0 para caber melhor */
+    #sobre h1, 
+    #sobre h2 {
+        text-align: center !important; /* Títulos no centro */
+        font-size: 2.3rem !important;  /* Fonte ajustada para caber na tela */
         line-height: 1.3;
-        padding: 0 10px;
+        
+        /* Centraliza o bloco na tela */
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 10px; 
     }
-    
-    /* Opcional: Se quiser que o texto abaixo (parágrafo) também fique centralizado */
+
+    /* Mantém o texto corrido à esquerda para facilitar a leitura */
     #sobre p {
-        text-align: center;
+        text-align: left !important;
+        padding: 0 10px; 
     }
+}
 
 /* --- ASSINATURA FUNDADORA --- */
 .founder-signature {
@@ -720,8 +723,4 @@ section:not(#hero) {
     .cursor {
         display: block;
     }
-
 }
-
-
-
