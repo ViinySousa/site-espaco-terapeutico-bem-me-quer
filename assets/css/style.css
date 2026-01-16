@@ -231,7 +231,7 @@ section:not(#hero) {
     #sobre h1, 
     #sobre h2 {
         /* Reduzimos de 2.5rem (ou padrão) para 1.8rem para caber tudo */
-        font-size: 2.1rem !important; 
+        font-size: 1.8rem !important; 
         line-height: 1.3;
         
         /* Garante que o container use a largura toda */
@@ -717,3 +717,4 @@ section:not(#hero) {
     }
 
 }
+
