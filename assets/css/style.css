@@ -58,9 +58,9 @@ h1, h2, h3 {
 /* Define um limite de largura para o conteúdo não colar nas bordas em telas grandes */
 .container {
     width: 100%;
-    max-width: 1280px; /* Largura máxima padrão de mercado */
+    max-width: 1080px; /* Largura mais compacta */
     margin: 0 auto; /* Centraliza o bloco na tela */
-    padding: 0 20px; /* Margem de segurança para mobile */
+    padding: 0 2rem; /* Margem de segurança */
 }
 
 /* WebGL Background Container */
@@ -136,9 +136,27 @@ h1, h2, h3 {
 
 /* Responsivo para Celular */
 @media (max-width: 768px) {
-    .hero-sup-title { font-size: 0.9rem; letter-spacing: 2px; }
-    .hero-main-title { font-size: 4rem; }
-    .hero-subtitle { font-size: 0.9rem; max-width: 90%; }
+    .hero-sup-title { font-size: 0.7rem !important; letter-spacing: 2px; }
+    .hero-main-title { font-size: 3.5rem !important; line-height: 1.1; }
+    .hero-subtitle { font-size: 0.72rem !important; max-width: 90%; margin-bottom: 2rem; }
+
+    /* Botão CTA Compacto */
+    .cta-button {
+        padding: 15px 20px !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* WhatsApp Flutuante Menor */
+    .floating-whatsapp {
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 24px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 /* Seções de Conteúdo (Sobre, Serviços, Equipe) */
@@ -164,20 +182,49 @@ section:not(#hero) {
 }
 
 /* Desktop: Layout em Linha */
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
     #sobre .container {
         flex-direction: row;
-        align-items: center;
-        gap: 80px;
+        align-items: flex-start;
+        gap: 4rem;
     }
     .sobre-text {
         flex: 1;
         text-align: left;
     }
+    /* Redução de Tipografia no Desktop */
+    #sobre h2 {
+        font-size: 2.1rem;
+        margin-bottom: 1.5rem;
+    }
+    #sobre p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    /* Ajuste da imagem no Desktop */
+    #sobre .sobre-visual img {
+        width: auto;
+        max-height: 500px;
+        max-width: 100%;
+        margin-top: 4.5rem;
+    }
     .sobre-visual {
         flex: 1;
         display: flex;
         justify-content: center;
+    }
+    /* Ajuste Fino de Textos (Desktop) */
+    #sobre .destaque {
+        font-size: 1.1rem !important;
+        font-weight: 500;
+    }
+    #sobre .founder-name {
+        font-size: 1.7rem !important;
+    }
+    #sobre .founder-role {
+        font-size: 0.70rem !important;
+        letter-spacing: 0.1em;
+        opacity: 0.8;
     }
 }
 
@@ -197,7 +244,7 @@ section:not(#hero) {
 
 .sobre-text .destaque {
     font-style: italic;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: var(--color-secondary);
 }
 
@@ -230,8 +277,8 @@ section:not(#hero) {
 @media (max-width: 768px) {
     #sobre h1, 
     #sobre h2 {
-        text-align: center !important; /* Títulos no centro */
-        font-size: 2.3rem !important;  /* Fonte ajustada para caber na tela */
+        text-align: left !important; /* Títulos no centro */
+        font-size: 1.6rem !important;  /* Fonte ajustada para caber na tela */
         line-height: 1.3;
         
         /* Centraliza o bloco na tela */
@@ -244,6 +291,7 @@ section:not(#hero) {
     /* Mantém o texto corrido à esquerda para facilitar a leitura */
     #sobre p {
         text-align: left !important;
+        font-size: 0.9rem !important;
         padding: 0 10px; 
     }
 }
@@ -259,7 +307,7 @@ section:not(#hero) {
 
 .founder-name {
     font-family: 'Great Vibes', cursive; /* Fonte manuscrita já importada */
-    font-size: 3rem; /* Tamanho grande para parecer assinatura */
+    font-size: 2rem; /* Tamanho grande para parecer assinatura */
     color: var(--color-primary); /* Verde */
     line-height: 1.1;
     margin-left: -5px; /* Pequeno ajuste visual óptico */
@@ -267,7 +315,7 @@ section:not(#hero) {
 
 .founder-role {
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 3px; /* Espaçamento elegante */
     color: var(--color-secondary); /* Terracota */
@@ -281,6 +329,7 @@ section:not(#hero) {
     line-height: 0;
     z-index: 3;
     margin-bottom: -2px;
+    padding-bottom: 35px; /* Pequeno espaço para evitar corte */
 }
 
 .section-divider svg {
@@ -316,7 +365,7 @@ section:not(#hero) {
 /* Título da Seção (Agora em Terracota para destaque) */
 .service-block h3 {
     font-family: var(--font-title);
-    font-size: 2rem;
+    font-size: 1.7rem;
     /* Alterado de Branco para a cor Secundária (Terracota) */
     color: var(--color-secondary) !important; 
     margin-bottom: 50px;
@@ -327,7 +376,7 @@ section:not(#hero) {
 /* Grid Responsivo */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 25px;
 }
 
@@ -347,12 +396,12 @@ section:not(#hero) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 180px;
+    min-height: 150px;
 }
 
 /* Ícones (Verde para conectar com o fundo) */
 .service-card i {
-    font-size: 38px;
+    font-size: 35px;
     color: var(--color-primary);
     margin-bottom: 20px;
     transition: transform 0.4s ease;
@@ -362,7 +411,7 @@ section:not(#hero) {
 .service-card h4 {
     font-family: var(--font-text);
     font-weight: 700;
-    font-size: 1.05rem;
+    font-size: 0.9rem;
     color: var(--color-text); /* Texto escuro dentro do card claro */
     line-height: 1.4;
 }
@@ -440,13 +489,13 @@ section:not(#hero) {
 }
 
 #equipe h2 {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     color: var(--color-primary);
     margin-bottom: 1rem;
 }
 
 #equipe p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--color-text);
     opacity: 0.8;
 }
