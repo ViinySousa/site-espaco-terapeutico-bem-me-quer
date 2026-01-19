@@ -136,14 +136,15 @@ h1, h2, h3 {
 
 /* Responsivo para Celular */
 @media (max-width: 768px) {
-    .hero-sup-title { font-size: 0.7rem !important; letter-spacing: 2px; }
+    .hero-sup-title { font-size: 0.7rem !important; letter-spacing: 2px; margin-bottom:10px; }
     .hero-main-title { font-size: 3.5rem !important; line-height: 1.1; }
-    .hero-subtitle { font-size: 0.72rem !important; max-width: 90%; margin-bottom: 2rem; }
+    .hero-subtitle { font-size: 0.7rem !important; max-width: 90%; margin-bottom: 2rem; }
 
     /* Botão CTA Compacto */
     .cta-button {
         padding: 15px 20px !important;
         font-size: 0.8rem !important;
+        
     }
 
     /* WhatsApp Flutuante Menor */
